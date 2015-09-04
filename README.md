@@ -136,7 +136,8 @@ returns :
 returns : 
 
 	{
-		"balance" : 100.50 //Your current account balance
+		"balance" : 100.50 //Your current account balance,
+	    "currency": "ZAR" //The currency that the balance is in, for now it is always ZAR
 	}
 
 ## Working Example ##
