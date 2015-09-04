@@ -18,10 +18,10 @@ This authentication header must be provided on every request to the api. If you 
 - Contact your account manager to get the url and credentials.
 
 ## Paging ##
-The list of partners and products both make use of paging, they do this with the use of two query string parameters :
+The list of partners and products both make use of paging through the use of two query string parameters :
 
 	?pageSize=10&pageNumber=1
-By manipulating the numberical values above you can request different pages and items per page. The response will contain the following paging info:
+By manipulating the numerical values above you can request different pages and items per page. The response will contain the following paging info:
 
 	{
 	    "data": [
@@ -105,7 +105,7 @@ POST parameters :
 	    "reference":"uniqueMemberReference", // This is the unique identifier for the recipient so that the request can be tied back to your system
 	    "displayName": "displayName that will go into comms", // The display name for the member, this will often be used in communications
 	    "primaryMobile" : "082 555 5555", // The primary mobile phone number for the member, this is where sms's with the voucher codes will be sent
-	    "primaryEmail" : "testUser@seeSayDo.co.za", // The primary email address for the member, this is where emails with the voucher codes will be sent
+	    "primaryEmail" : "testUser@company.co.za", // The primary email address for the member, this is where emails with the voucher codes will be sent
 	    "someCustomField1" : true, // You can also include any extra properties about the member that relate to the transaction in the standard JSON format
 	    "moreCustomFields" : "asd"
 	  }
@@ -116,7 +116,7 @@ returns :
 	{
 	    "_id": "55e95c04709826e815333b32", // the unique identifier for the order
 	    "productId": "10", // the product id requested
-	    "programName": "seesaydo", // the program name
+	    "programName": "programName", // the program name
 	    "quantity": 1, //the number of items in the order
 	    "partnerId": 3, // the partner id for the order
 	    "status": "pending" // the current status of the order
@@ -137,7 +137,7 @@ returns :
 
 	{
 		"balance" : 100.50 //Your current account balance,
-	    "currency": "ZAR" //The currency that the balance is in, for now it is always ZAR
+	    "currency": "ZAR" //The currency that the balance and products are priced in. 
 	}
 
 ## Working Example ##
