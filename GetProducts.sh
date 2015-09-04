@@ -1,0 +1,1 @@
+curl "https://encentivizestoreqa.azurewebsites.net/:programName/api/partners/3/products?pageSize=10&pageNumber=1" -H "Authorization: Basic todo"

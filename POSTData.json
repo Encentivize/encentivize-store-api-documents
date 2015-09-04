@@ -1,0 +1,10 @@
+{
+  "recipient": {
+    "reference":"uniqueMemberReference",
+    "displayName": "displayName that will go into comms",
+    "primaryMobile" : "082 555 5555",
+    "primaryEmail" : "testUser@todo.co.za",
+    "someCustomField1" : true,
+    "moreCustomFields" : "asd"
+  }
+}

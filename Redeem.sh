@@ -1,0 +1,1 @@
+curl "https://encentivizestoreqa.azurewebsites.net/:programName/api/products/10/redeem" -H "Authorization: Basic todo" --data "@POSTData.json"

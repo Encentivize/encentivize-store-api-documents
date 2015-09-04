@@ -1,0 +1,63 @@
+{
+  "id": "b6b12769-d761-1c85-da67-0a1aaf425d23",
+  "name": "Store QA",
+  "timestamp": 1441115308497,
+  "requests": [
+    {
+      "collectionId": "b6b12769-d761-1c85-da67-0a1aaf425d23",
+      "id": "3431d709-ea39-75a6-31c4-1a967e255936",
+      "name": "Get Products",
+      "description": "",
+      "url": "https://encentivizestoreqa.azurewebsites.net/:programName/api/partners/3/products?pageSize=10&pageNumber=1",
+      "method": "GET",
+      "headers": "Authorization: Basic todo\n",
+      "data": "{\n  \"recipient\": {\n    \"reference\":\"uniqueMemberReference\",\n    \"displayName\": \"displayName that will go into comms\",\n    \"primaryMobile\" : \"082 555 5555\",\n    \"primaryEmail\" : \"testUser@todo.co.za\",\n    \"someCustomField1\" : true,\n    \"moreCustomFields\" : \"asd\"\n  }\n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "responses": [],
+      "version": 2
+    },
+    {
+      "collectionId": "b6b12769-d761-1c85-da67-0a1aaf425d23",
+      "id": "3be8463b-5fd5-7ed8-ab2d-fe3b8e71607f",
+      "name": "Redeem Product",
+      "description": "",
+      "url": "https://encentivizestoreqa.azurewebsites.net/:programName/api/products/10/redeem",
+      "method": "POST",
+      "headers": "Authorization: Basic todo\n",
+      "data": "{\n  \"recipient\": {\n    \"reference\":\"uniqueMemberReference\",\n    \"displayName\": \"displayName that will go into comms\",\n    \"primaryMobile\" : \"082 555 5555\",\n    \"primaryEmail\" : \"testUser@todo.co.za\",\n    \"someCustomField1\" : true,\n    \"moreCustomFields\" : \"asd\"\n  }\n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "responses": [],
+      "version": 2
+    },
+    {
+      "collectionId": "b6b12769-d761-1c85-da67-0a1aaf425d23",
+      "id": "a61be9b8-eac2-2ba8-f2c6-8116be3ed627",
+      "name": "Get Account Balance",
+      "description": "",
+      "url": "https://encentivizestoreqa.azurewebsites.net/:programName/api/account",
+      "method": "GET",
+      "headers": "Authorization: Basic todo\n",
+      "data": "{\n  \"recipient\": {\n    \"reference\":\"uniqueMemberReference\",\n    \"displayName\": \"displayName that will go into comms\",\n    \"primaryMobile\" : \"082 555 5555\",\n    \"primaryEmail\" : \"testUser@todo.co.za\",\n    \"someCustomField1\" : true,\n    \"moreCustomFields\" : \"asd\"\n  }\n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "version": 2,
+      "time": 1441357287394
+    },
+    {
+      "collectionId": "b6b12769-d761-1c85-da67-0a1aaf425d23",
+      "id": "c7417d8d-b767-1acc-7e1d-25d5a2380e78",
+      "name": "Get Partners",
+      "description": "",
+      "url": "https://encentivizestoreqa.azurewebsites.net/:programName/api/partners?pageSize=10&pageNumber=1",
+      "method": "GET",
+      "headers": "Authorization: Basic todo\n",
+      "data": "{\n  \"recipient\": {\n    \"reference\":\"uniqueMemberReference\",\n    \"displayName\": \"displayName that will go into comms\",\n    \"primaryMobile\" : \"082 555 5555\",\n    \"primaryEmail\" : \"testUser@todo.co.za\",\n    \"someCustomField1\" : true,\n    \"moreCustomFields\" : \"asd\"\n  }\n}",
+      "dataMode": "raw",
+      "timestamp": 0,
+      "responses": [],
+      "version": 2
+    }
+  ]
+}
