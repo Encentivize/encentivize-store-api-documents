@@ -3,7 +3,7 @@
 This api interface allows you to interact with the encentivize system via [REST](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 - Testing can be done in our QA environment.
-- All routes require your credentials supplied via basic authentication, the details for QA can be found below. Contact your account manager for live credentials.
+- All routes require your credentials supplied via basic authentication. Contact your account manager for QA & live credentials.
 
 ## Authentication ##
 The api uses the [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) scheme. So for example:
@@ -43,6 +43,7 @@ These examples will refer to api methods below by number. e.g. (1) refers to the
 1. Get a list of partners from our api using (1). These partners act as containers or categories, grouping vouchers from the same suppliers together.
 2. Once the user has selected a partner, you can find the products provided by that partner using (2).
 3. Once the user has selected a product they would like to redeem, you can request it using (3).
+4. (Optional) the encentivize system can be configured to call your system to notify you of successful and failed voucher redemption's. See below for details.
 
 ## Api Functions ##
 
@@ -115,8 +116,8 @@ returns :
 	
 	{
 	    "_id": "55e95c04709826e815333b32", // the unique identifier for the order
-	    "productId": "10", // the product id requested
-	    "programName": "programName", // the program name
+	    "productId": 10, // the product id requested
+	    "programName": "testProgram", // the program name
 	    "quantity": 1, //the number of items in the order
 	    "partnerId": 3, // the partner id for the order
 	    "status": "pending" // the current status of the order
@@ -139,7 +140,52 @@ returns :
 		"balance" : 100.50 //Your current account balance,
 	    "currency": "ZAR" //The currency that the balance and products are priced in. 
 	}
+	
+## Third party callback (Optional) ##
+- A callback url may be specified for both successful and failed voucher requests.
+- You can use the same url for both types or provide a different url for each. 
+- Both responses will be sent as a POST request containing JSON data with the content-type header set to 'application/json;charset=UTF-8'
+- Authentication is not supported.
+- Any data returned in the response will be persisted to our database for auditing purposes.
+  
+### Success object ###
+    {
+        id: "55e95c04709826e815333b32", // the unique identifier for the order
+        programName: "testProgram", // the program name
+        recipientReference: "66", // the identifier for the member who received the voucher 
+        productId: 10 // the identifier for the product requested
+        status : 'Success', // the status of the order, will always be 'Success'
+        vouchers: [  //contains a list of the vouchers generated, currently limited to one per request though this will change in future
+            {
+            	"VoucherCode" : "test-123", // the code the member is to present to the cashier or type in on the website, etc
+            	"Value" : 0.0100000000000000, // The rand value of the voucher, currently only supports ZAR but may change in future
+            	"VoucherUrl" : "", // The url associated with the voucher, not currently used
+            	"Name" : "Test Snack R150", // The name of the voucher
+            	"Description" : "Test voucher to the value of R150", // a brief description of the voucher
+            	"ValidityDescription" : null, // A description related to the terms under which the voucher is valid
+            	"VoucherType" : "", // reserved for future use,
+            	"VoucherIssuer" : "", // reserved for future use
+            	"ContactInfo" : "",// reserved for future use
+            	"VoucherHtml" : "", // reserved for future use
+            	"DateIssued" : null, // The ISO date string indicating when this voucher was issued, can be null
+            	"ExpiryDate" : null //The ISO date string indicating when the voucher code expires, can be null
+            }
+        ]
+    }
 
+### Failure object ###
+    {
+        id: "55e95c04709826e815333b32", // the unique identifier for the order
+        programName: "testProgram", // the program name
+        recipientReference: "66", // the identifier for the member who received the voucher 
+        productId: 10 // the identifier for the product requested
+        status : 'Failure', // the status of the order, will always be 'Failure'
+        errors : [ //contains the list of errors that caused the request to fail, currently only ever a string
+            "reason 1",
+            "reason 2"
+        ]
+    }
+    
 ## Working Example ##
 If you have Google Chrome installed you can add a plugin called postman and import the example file included with this readme. From there you can call the methods and see examples of the outputs on qa.
 Alternatively you can use the [cUrl](http://curl.haxx.se/) scripts provided with this readme to call the endpoints.
