@@ -1,6 +1,6 @@
-#Voucher Store#
+# Voucher Store #
 
-This api interface allows you to interact with the encentivize system via [REST](https://en.wikipedia.org/wiki/Representational_state_transfer).
+This api interface allows you to interact with the Encentivize system via [REST](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 - Testing can be done in our QA environment.
 - All routes require your credentials supplied via basic authentication. Contact your account manager for QA & live credentials.
@@ -133,7 +133,7 @@ returns :
 - If there is insufficient funds in your account, then it will return 4xx Bad Request with the insufficient funds description.
 - If an error occures when processing the request the api will return a 5xx Server Error.
 
-####3.1 <a name="variable-value">Variable value vouchers</a>
+#### 3.1 <a name="variable-value">Variable value vouchers</a>
 Some vouchers do not have a fixed value, which means you can specify the value that you want the issued voucher to be worth. For example, when redeeming airtime you can specify how much airtime you want. To specify the desired value you must provide the `variableValue` property in the body. The minimum and maximum values for a voucher are restricted by the `maxVariableValue` and `maxVariableValue` on a product (`/products/:productId`). 
 
 
