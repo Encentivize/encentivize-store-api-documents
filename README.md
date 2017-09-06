@@ -90,6 +90,8 @@ returns :
 			"imageCaption" : null, // This is the description of the image, often used for the alt text in html
 			"currentStockBalance": 46 //The current stock level for this product
 			"units" : 1 //the number of stock units that are required when redeeming one of these rewards. e.g. if the units is set to 5 and the currentStockBalance is 10, then you can redeem two of these rewards.
+			"maxVariableValue":null //the maximum value that this voucher can be issued for. Only applies to variable value vouchers
+			"minVariableValue":null //the minimum value that this voucher can be issued for. Only applies to variable value vouchers
 		}],
 		... paging info...
 	}
@@ -109,7 +111,9 @@ POST parameters :
 	    "primaryEmail" : "testUser@company.co.za", // The primary email address for the member, this is where emails with the voucher codes will be sent
 	    "someCustomField1" : true, // You can also include any extra properties about the member that relate to the transaction in the standard JSON format
 	    "moreCustomFields" : "asd"
-	  }
+	  },
+	
+	  "variableValue":5  //The value of the issued voucher. Only applicable to variable value vouchers (see 3.1)
 	}
 
 returns : 
@@ -128,6 +132,10 @@ returns :
 - If there is no stock available will return 4xx with the no stock description.
 - If there is insufficient funds in your account, then it will return 4xx Bad Request with the insufficient funds description.
 - If an error occures when processing the request the api will return a 5xx Server Error.
+
+####3.1 <a name="variable-value">Variable value vouchers</a>
+Some vouchers do not have a fixed value, which means you can specify the value that you want the issued voucher to be worth. For example, when redeeming airtime you can specify how much airtime you want. To specify the desired value you must provide the `variableValue` property in the body. The minimum and maximum values for a voucher are restricted by the `maxVariableValue` and `maxVariableValue` on a product (`/products/:productId`). 
+
 
 ### 4. Get Account ###
 - Route:  **/account**
