@@ -43,7 +43,7 @@ These examples will refer to api methods below by number. e.g. (1) refers to the
 1. Get a list of partners from our api using (1). These partners act as containers or categories, grouping vouchers from the same suppliers together.
 2. Once the user has selected a partner, you can find the products provided by that partner using (2).
 3. Once the user has selected a product they would like to redeem, you can request it using (3).
-4. (Optional) the encentivize system can be configured to call your system to notify you of successful and failed voucher redemption's. See below for details.
+4. The encentivize system is configured to call your system to notify you of successful and failed voucher redemption's. See below for details.
 
 ## Api Functions ##
 
@@ -149,7 +149,7 @@ returns :
 	    "currency": "ZAR" //The currency that the balance and products are priced in. 
 	}
 	
-## Third party callback (Optional) ##
+## Webhook  ##
 - A callback url may be specified for both successful and failed voucher requests.
 - You can use the same url for both types or provide a different url for each. 
 - Both responses will be sent as a POST request containing JSON data with the content-type header set to 'application/json;charset=UTF-8'
